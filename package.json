@@ -1,7 +1,6 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +9,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "router": "^1.3.3"
-  }
+    "handlebars": "^4.0.12",
+    "router": "^1.3.3",
+    "semantic-ui-css": "^2.4.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tataqwerty/github-client.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/tataqwerty/github-client/issues"
+  },
+  "homepage": "https://github.com/tataqwerty/github-client#readme",
+  "description": ""
 }
