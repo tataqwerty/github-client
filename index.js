@@ -6,36 +6,46 @@ const path = require('path');
 const fs = require('fs');
 
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/static'));
 
-app.get('/api/*', (req, res) => {
-	console.log('API');
+/*
+** API
+*/
+
+app.post('/api/register_ajax', (req, res) => {
+//	this handler registers user
 });
 
-// Request that does not match api/ folder,
-// Attempts to grab the html from views/pages/
-app.get(/^(?!\/api\/)/, (req, res) => {   
-	var purl = url.parse(req.url, true);
-	var pathname = purl.pathname;
+app.post('/api/sign-in_ajax', (req, res) => {
+//	this handler logins user
+});
 
+/*
+** Routes
+*/
 
-	if (pathname[pathname.length - 1] === '/')
-	{
-		pathname += 'index';
-	}
-	res.render(pathname, {'name': 'taras'}, (err, html) => {
+/*
+** @param contentPage - main part of the page
+*/
+
+app.get(/^(?!\/api\/)/, (req, res) => {
+	var parsedURL = url.parse(req.url, true);
+	var contentPage = parsedURL.pathname;
+
+	if (contentPage == '/')
+		contentPage += 'index';
+
+	app.render('index', {'contentPage': contentPage}, (err, html) => {
 		if (err)
 		{
 			res.statusCode = 400;
-			res.render('404');
+			res.render('index', {'contentPage': '404'});
 		}
 		else
 		{
-			res.statusCode = 200;
 			res.send(html);
 		}
 	});
 });
 
-app.listen(8080, () => {
-	console.log('listening to 8080');
-});
+app.listen(8080);
