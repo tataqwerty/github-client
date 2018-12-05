@@ -2,14 +2,16 @@
 const http = require('http');
 const express = require('express');
 const app = express();
-const url = require('url');
-const path = require('path');
-const fs = require('fs');
 const mysql = require('mysql');
 var connection = mysql.createConnection({
 	host	: 'localhost',
 	user	: 'root',
-	port	: 3306
+	port	: 3306,
+	database: 'test'
+});
+
+connection.on('error', (err) => {
+	console.log(err);
 });
 
 connection.connect();
@@ -23,10 +25,12 @@ connection.connect();
 
 // app.post('/api/sign-up_ajax', (req, res) => {
 // //	this handler registers user
+// 	res.send(`/api/sign-up_ajax`);
 // });
 
-// app.post('/api/sign-in_ajax', (req, res) => {
+// app.post('/api/login_ajax', (req, res) => {
 // //	this handler logins user
+// 	res.send(`/api/login_ajax`);
 // });
 
 // /*
@@ -38,17 +42,17 @@ connection.connect();
 // });
 
 // app.get('/my-page', (req, res, next) => {
-// 	if (!req.session.isLoggedIn)
-// 		next();
-// 	else
-// 		res.render('index', {'contentPage': 'my-page'});
+// 	// if (!req.session.isLoggedIn)
+// 	// 	next();
+// 	// else
+// 	// 	res.render('index', {'contentPage': 'my-page'});
 // });
 
 // app.get('/sign-up', (req, res, next) => {
-// 	if (req.session.isLoggedIn)
-// 		next();
-// 	else
-// 		res.render('index', {'contentPage': 'sign-up'});
+// 	// if (req.session.isLoggedIn)
+// 	// 	next();
+// 	// else
+// 	// 	res.render('index', {'contentPage': 'sign-up'});
 // });
 
 // app.get('*', () => {
