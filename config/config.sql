@@ -8,3 +8,13 @@ CREATE TABLE IF NOT EXISTS test.session(
 	UNIQUE KEY(`token`),
 	PRIMARY KEY(`id`)
 );
+
+CREATE TABLE IF NOT EXISTS test.users(
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`login` char(64) NOT NULL,
+	`email` char(64) NOT NULL,
+	`password` char(64) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+-- INSERT INTO `users` (`login`, `email`, `password`) VALUES('tralala', '123', 'asd');
